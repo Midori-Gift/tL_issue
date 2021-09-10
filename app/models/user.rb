@@ -3,4 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+         has_many :posts, dependent: :destroy
+         
+        # ユーザーアイコン設定用
+         attachment :profile_image
+         
 end

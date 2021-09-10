@@ -1,0 +1,10 @@
+<h2>新規投稿フォーム</h2>
+
+<%= form_with model: @post, local: true do |f| %>
+  <h2>画像選択</h2>
+  <%= f.attachment_field :image %>
+  <h2>投稿内容</h2>
+  <%= f.text_area :sentence %>
+  <%= f.submit '投稿する' %>
+<% end %>
+
