@@ -1,0 +1,24 @@
+<h2>投稿詳細</h2>
+
+<div>
+    <h2>
+      <%= attachment_image_tag @post.user.profile_image, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      投稿者:<%= @post.user.name %>
+    </h2>
+    <!--閲覧者が投稿者なら削除ボタンを表示-->
+    <% if @post.user.id == current_user.id %>
+      <%= link_to "投稿を削除", post_destroy_path(@post.id), method: :delete %>
+    <% end %>
+    <!-- -->
+      <p><%= attachment_image_tag @post, :image, :fill, 500, 500, format: 'jpeg' %></p>
+      <h3>投稿内容</h3>
+      <h4><%= @post.sentence %></4>
+</div>
+
+<h2>コメントする</h2>
+<%= form_with model:[@post, @post_comment], url:'posts/:post_id/postcomment', local: true do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "コメントする" %>
+<% end %>
+
+<h2>※~この下にコメント~</h2>
