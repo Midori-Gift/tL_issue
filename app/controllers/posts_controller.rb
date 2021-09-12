@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   end
   
   def index
-    @post = Post.all
+    # Post.allとほぼ同義、違いはページャが利用可能になるところ
+    @post = Post.page(params[:page]).reverse_order
   end
   
   def show
