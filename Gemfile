@@ -67,3 +67,6 @@ gem 'devise'
 # ファイルをアップロード出来るように追加 (画像用) 9/10
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick" # 画像のリサイズが行える
+
+# 今後たくさんのユーザーが利用する想定でページング機能を追加しています。
+gem 'kaminari','~> 1.2.1'
