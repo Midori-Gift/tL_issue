@@ -2,7 +2,20 @@
 
 <div>
     <h2>
-      <%= attachment_image_tag @post.user.profile_image, :image, :fill, 100, 100, fallback: "no_image.jpg" %>投稿者:<%= @post.user.name %>
+      <%= attachment_image_tag @post.user.profile_image, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      投稿者:<%= @post.user.name %>
+    </h2>
+    <h2>
+      <!--postモデルに定義したfavorite_by?メソッドを使用-->
+      <% if @post.favorited_by?(current_user) %> 
+        <%= link_to post_favorites_path(@post.id), method: :delete do %>
+          ♥<%= @post.favorites.count %> いいね
+        <% end %>
+      <% else %>
+        <%= link_to post_favorites_path(@post.id), method: :post do %>
+          ♡<%= @post.favorites.count %> いいね
+        <% end %>
+      <% end %>
     </h2>
     <!--閲覧者が投稿者なら削除ボタンを表示-->
     <% if @post.user.id == current_user.id %>
@@ -22,9 +35,11 @@
         <%= attachment_image_tag comment.user.profile_image, :image, :fill , 100, 100, fallback: "no_image.jpg"%>
         <%= comment.user.name %>
         <%= comment.comment %>
+        <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
         <% if current_user.id == comment.user.id %>
           <%= link_to 'コメント削除', post_post_comment_path(comment.id), method: :delete %>
         <% end %>
+        <!-- -->
       <% end %>
     </div>
 </div>
