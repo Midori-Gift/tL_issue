@@ -15,12 +15,17 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    
     # 投稿者が分かるようにユーザーidを与える
     @post.user_id = current_user.id
     
-    @post.save
-    redirect_to posts_path
+    # 投稿が成功すれば一覧へ, 違うなら更新を加えずページに留まる。
+    if @post.save
+      flash[:notice] = '投稿に成功しました！'
+      redirect_to posts_path
+    else
+      flash.now[:alert] = '※投稿に失敗しました、画像と文字の入力は必須です。'
+      render :new
+    end
   end
   
   def destroy

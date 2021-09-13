@@ -31,9 +31,12 @@
       <li>
         <%= link_to "ログイン", new_user_session_path %>
       </li>
-    <!-- -->
-    
     <% end %>
+    <!-- -->
+    <!--各ページでのエラーメッセージを表示させるために追加-->
+      <h3 class="notice"><%= notice %></h3>
+      <h3 class="alert"><%= alert %></h3>
+    <!-- -->
     <%= yield %>
   </body>
 </html>
