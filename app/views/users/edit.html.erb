@@ -1,2 +1,10 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>プロフィール編集</h2>
+<%= form_with model: @user, url: user_path, method: :patch, local: true do |f| %>
+  <h3>ユーザーアイコン用画像</h3>
+  <h4>※設定中の画像</h4>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg' %>
+  <p><%= f.attachment_field :profile_image %></p>
+  <h2>ユーザーネーム</h2>
+  <%= f.text_field :name %>
+  <%= f.submit '変更を保存する' %>
+<% end %>

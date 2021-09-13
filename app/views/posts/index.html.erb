@@ -3,12 +3,12 @@
 <div>
   <% @post.each do |pos| %>
     <h2>
-      <%= attachment_image_tag pos.user.profile_image, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag pos.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
       投稿者:<%= pos.user.name %>
     </h2>
     <!--投稿した画像と文章までの範囲をリンク化、投稿詳細ページへ繋げる-->
     <%= link_to post_path(pos.id) do %>
-      <p><%= attachment_image_tag pos, :image, :fill, 400, 400, format: 'jpeg'  %></p>
+      <p><%= attachment_image_tag pos, :image, :fill, 400, 400, format: 'jpeg' %></p>
       <p><%= pos.sentence %></p>
     <% end %>
     <!--  -->

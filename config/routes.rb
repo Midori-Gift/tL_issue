@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   
   # ユーザー関連ルーティング
-  resources :users, only:[:show, :edit]
+  resources :users, only:[:show, :edit, :update]
   
   # 投稿関連ルーティング
   resources :posts, only:[:new, :index, :show, :create, :destroy] 

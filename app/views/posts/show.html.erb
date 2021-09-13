@@ -2,7 +2,7 @@
 
 <div>
     <h2>
-      <%= attachment_image_tag @post.user.profile_image, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
       投稿者:<%= @post.user.name %>
     </h2>
     <h2>
@@ -32,7 +32,7 @@
       <% end %>
     <div>
       <% @post.post_comments.each do |comment| %>
-        <%= attachment_image_tag comment.user.profile_image, :image, :fill , 100, 100, fallback: "no_image.jpg"%>
+        <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
         <%= comment.user.name %>
         <%= comment.comment %>
         <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
