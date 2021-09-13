@@ -2,7 +2,7 @@
 
 <div>
     <h2>
-      <%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class:'rounded-circle' %>
       投稿者:<%= @post.user.name %>
     </h2>
     <h2>
@@ -27,8 +27,8 @@
       <h4><%= @post.sentence %></4>
     <h2>コメントする</h2>
       <%= form_with model:[@post,@post_comment], url: post_post_comments_path(@post.id), local: true do |f| %>
-        <%= f.text_area :comment %>
-        <%= f.submit "コメントする" %>
+        <%= f.text_area :comment,class:'form-control' %>
+        <%= f.submit "コメントする",class:'form-control, btn-primary' %>
       <% end %>
     <div>
       <% @post.post_comments.each do |comment| %>

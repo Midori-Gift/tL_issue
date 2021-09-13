@@ -1,19 +1,19 @@
-<h2>
+<h4>
   <% if current_user.id == @user.id %>
     あなた(<%= @user.name %>さん)のマイページです
   <% else %>
     <%= @user.name さんのページ%>
   <% end %>
-</h2>
-<h2>
-  <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback:'no_image.jpg' %>
+</h4>
+<h4>
+  <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback:'no_image.jpg', class:'rounded-circle' %>
   ユーザーネーム: <%= @user.name %>
   <% if current_user.id == @user.id %>
     <%= link_to 'ユーザー情報編集', edit_user_path(@user.id) %>
   <% end %>
-</h2>
+</h4>
 
-<h2>投稿一覧</h2>
+<h3>投稿一覧</h3>
 <% @user_post.each do |pos|%>
   <div>
     <%= link_to post_path(pos.id) do %>

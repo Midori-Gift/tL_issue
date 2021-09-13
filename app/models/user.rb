@@ -10,5 +10,4 @@ class User < ApplicationRecord
          
         # ユーザーアイコン設定用
          attachment :profile_image
-         
 end
