@@ -18,7 +18,8 @@
   <div>
     <%= link_to post_path(pos.id) do %>
     <div><%= attachment_image_tag pos, :image, :fill, 400, 400, format: 'jpeg' %></div>
-    <div><%= pos.sentence %></div>
+    <h5><%= l pos.created_at %></h5>
+    <h5><%= pos.sentence %></h5>
     <% end %>
     <%= paginate @user_post %>
   </div>

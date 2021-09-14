@@ -17,18 +17,21 @@
         <% end %>
       <% end %>
     </h2>
-    <!--閲覧者が投稿者なら削除ボタンを表示-->
-    <% if @post.user.id == current_user.id %>
-      <%= link_to "投稿を削除", post_path(@post.id), method: :delete %>
-    <% end %>
-    <!-- -->
-      <p><%= attachment_image_tag @post, :image, :fill, 500, 500, format: 'jpeg' %></p>
-      <h3>投稿内容</h3>
+ 
+      <p><%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %></p>
+    <div><h3>投稿内容</h3>
+        <!--閲覧者が投稿者なら削除ボタンを表示-->
+        <% if @post.user.id == current_user.id %>
+        <%= link_to "投稿を削除", post_path(@post.id), method: :delete, class:'btn btn-danger' %>
+        <% end %>
+        <!-- -->
+        <h4><%= l @post.created_at%></h4>
       <h4><%= @post.sentence %></4>
+    </div>
     <h2>コメントする</h2>
       <%= form_with model:[@post,@post_comment], url: post_post_comments_path(@post.id), local: true do |f| %>
         <%= f.text_area :comment,class:'form-control' %>
-        <%= f.submit "コメントする",class:'form-control, btn-primary' %>
+        <%= f.submit "コメントする",class:'btn btn-primary mt-4 ml-auto' %>
       <% end %>
     <div>
       <% @post.post_comments.each do |comment| %>

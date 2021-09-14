@@ -1,19 +1,29 @@
 <h3>投稿一覧</h3>
 
-<div>
-  <% @post.each do |pos| %>
-    <h4>
-      <%= link_to user_path(pos.user.id) do %>
-      <%= attachment_image_tag pos.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:'rounded-circle' %>
-      <%= pos.user.name %>
-      <% end %>
-    </h4>
-    <!--投稿した画像と文章までの範囲をリンク化、投稿詳細ページへ繋げる-->
+<% @post.each do |pos| %>
+  <!--投稿した画像と文章までの範囲をリンク化、投稿詳細ページへ繋げる-->
     <%= link_to post_path(pos.id) do %>
-      <p><%= attachment_image_tag pos, :image, :fill, 400, 400, format: 'jpeg' %></p>
-      <p><%= pos.sentence %></p>
+      <div class="card mt-3 mb-4 bg-light">
+        <div class="row g-0">
+          <div class="col-5 col-sm-4">
+            <div alt="card-horizontal-image">
+              
+              <%= attachment_image_tag pos, :image, :fill, 400, 400, format: 'jpeg', class:'img-fluid w-100' %>
+            </div>
+          </div>
+          <div class="col-7 col-sm-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= attachment_image_tag pos.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:'rounded-circle' %>
+                <%= pos.user.name %>
+                <span class="card-text"><%= l pos.created_at %></span>
+            </h5>
+              <p class="card-text"><div class="text-muted"><%= pos.sentence %></div></p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <!--  -->
-  <% end %>
-  <%= paginate @post %>
-</div>
+  <!--  -->
+<% end %>
+<%= paginate @post %>

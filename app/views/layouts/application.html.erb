@@ -4,13 +4,11 @@
     <title>tLissue</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <!-- ヘッダー部分 -->
-      
   <nav class="navbar navbar-expand-xl navbar-dark bg-info">
     <div class="container-fluid">
       <h1><%= link_to 'We\'Blog!', root_path, class:'navbar-brand' %></h1>
@@ -41,20 +39,20 @@
             <%= link_to "新規登録", new_user_registration_path, class:'nav-link active' %>
           </h4>
           <h4 class="nav-item">
-            <%= link_to "ログイン", new_user_session_path,class:'nav-link active disabled' %>
-          <% end %>
+            <%= link_to "ログイン", new_user_session_path, class:'nav-link active' %>
           </h4>
+          <% end %>
         </ul>
       </div>
     </div>
   </nav>
-  
-
     <!-- -->
-    <!--各ページでのエラーメッセージを表示させるために追加-->
-      <h3 class="notice"><%= notice %></h3>
-      <h3 class="alert"><%= alert %></h3>
-    <!-- -->
-    <%= yield %>
+    <div class="container">
+      <!--各ページでのエラーメッセージを表示させるために追加-->
+        <h3 class="notice"><%= notice %></h3>
+        <h3 class="alert"><%= alert %></h3>
+      <!-- -->
+      <%= yield %>
+    </div>
   </body>
 </html>
