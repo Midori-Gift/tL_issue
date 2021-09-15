@@ -1,2 +1,22 @@
-<h1>Homes#top</h1>
-<p>トップページです、始めましょう。</p>
+<div class="row">
+  <div class="col-md-10 m-auto">
+    <div class="mt-4">
+      <h1><strong>We'Blog!</strong><small class="ml-3">へようこそ！</small></h1>
+      <h3 class="mt-5">毎日のログに写真を添えて共有してみましょう</h3>
+      <h3 class="mt-4">あなたの素敵なログ、お待ちしております。</h3>
+        <div class="col-md-8 m-auto">
+          <div class="mt-5">
+            <% if user_signed_in? %>
+              <%= link_to 'ログイン', user_path(current_user.id), class:'btn-lg btn-primary'%>
+              <%= link_to 'サインイン',user_path(current_user.id), class:'btn-lg btn-success ml-5'%>
+            <% else %>
+              <%= link_to 'ログイン', new_user_session_path, class:'btn-lg btn-primary'%>
+              <%= link_to 'サインイン', new_user_registration_path, class:'btn-lg btn-success ml-5'%>
+            <% end %>
+          </div>
+            
+            
+        </div>
+     </div>
+  </div>
+</div>

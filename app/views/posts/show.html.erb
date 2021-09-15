@@ -1,49 +1,63 @@
-<h2>投稿詳細</h2>
-
-<div>
-    <h2>
-      <%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class:'rounded-circle' %>
-      投稿者:<%= @post.user.name %>
-    </h2>
-    <h2>
-      <!--postモデルに定義したfavorite_by?メソッドを使用-->
-      <% if @post.favorited_by?(current_user) %> 
-        <%= link_to post_favorites_path(@post.id), method: :delete do %>
-          ♥<%= @post.favorites.count %> いいね
+<div class="row">
+  <div class="col-md-8 mt-4">
+    <h2>Log detail</h2>
+    <div class="mt-4">
+        <h2>
+          <%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:'rounded-circle' %>
+          <%= @post.user.name %>
+        </h2>
+          <p><%= attachment_image_tag @post, :image, :fill, 600, 400, format: 'jpeg' %></p>
+        <div>
+          <h3>投稿内容</h3>
+           <div class="d-flex mt-4">
+             <h2>
+             <!--postモデルに定義したfavorite_by?メソッドを使用-->
+              <% if @post.favorited_by?(current_user) %> 
+              <%= link_to post_favorites_path(@post.id), method: :delete do %>
+                <strong>♥</strong><%= @post.favorites.count %> いいね
+              <% end %>
+              <% else %>
+              <%= link_to post_favorites_path(@post.id), method: :post do %>
+                <strong>♡</strong><%= @post.favorites.count %> いいね
+              <% end %>
+              <% end %>
+            </h2>
+            <!--閲覧者が投稿者なら削除ボタンを表示-->
+            <% if @post.user.id == current_user.id %>
+              <div class="col-md-6 ml-auto"><%= link_to "投稿を削除", post_path(@post.id), method: :delete, class:'btn btn-outline-danger' %></div>
+            <% end %>
+            <!-- -->
+            </div>
+            <h4><%= l @post.created_at%></h4>
+          <h4 class="mt-4 mb-4"><%= @post.sentence %></4>
+        </div>
+        <h4>コメントする</h4>
+          <%= form_with model:[@post,@post_comment], url: post_post_comments_path(@post.id), local: true do |f| %>
+            <div class="mt-4"><%= f.text_area :comment,class:'form-group-lg form-control' %>
+            <div class="col-md-2 ml-auto mr-3"><%= f.submit "コメントする",class:'btn btn-outline-primary mt-4' %></div>
+          <% end %>
+      <div>
+        <% @post.post_comments.each do |comment| %>
+        <div class="card mt-5 bg-light">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to user_path(comment.user.id) do %>
+                <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"rounded-circle"%>
+                <%= comment.user.name %>
+              <% end %>
+            </h5>
+            <p class="card-text"><%= comment.comment %></p>
+            <% if current_user.id == comment.user.id %>
+            <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
+              <div class="col-md-5 ml-auto"><%= link_to 'コメント削除', post_post_comment_path(comment.id), method: :delete, class:'btn btn-outline-danger ml-5' %>
+            <% end %>
+            <!-- -->
+          </div>
+        </div>
+         
+          
         <% end %>
-      <% else %>
-        <%= link_to post_favorites_path(@post.id), method: :post do %>
-          ♡<%= @post.favorites.count %> いいね
-        <% end %>
-      <% end %>
-    </h2>
- 
-      <p><%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %></p>
-    <div><h3>投稿内容</h3>
-        <!--閲覧者が投稿者なら削除ボタンを表示-->
-        <% if @post.user.id == current_user.id %>
-        <%= link_to "投稿を削除", post_path(@post.id), method: :delete, class:'btn btn-danger' %>
-        <% end %>
-        <!-- -->
-        <h4><%= l @post.created_at%></h4>
-      <h4><%= @post.sentence %></4>
+      </div>
     </div>
-    <h2>コメントする</h2>
-      <%= form_with model:[@post,@post_comment], url: post_post_comments_path(@post.id), local: true do |f| %>
-        <%= f.text_area :comment,class:'form-control' %>
-        <%= f.submit "コメントする",class:'btn btn-primary mt-4 ml-auto' %>
-      <% end %>
-    <div>
-      <% @post.post_comments.each do |comment| %>
-        <%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
-        <%= comment.user.name %>
-        <%= comment.comment %>
-        <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
-        <% if current_user.id == comment.user.id %>
-          <%= link_to 'コメント削除', post_post_comment_path(comment.id), method: :delete %>
-        <% end %>
-        <!-- -->
-      <% end %>
-    </div>
+  </div>
 </div>
-

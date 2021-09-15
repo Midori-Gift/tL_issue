@@ -12,7 +12,8 @@ Kaminari.configure do |config|
   # config.max_pages = nil
   # config.params_on_first_page = false
   
-  # 一度に表示できる投稿数を10にした 2021/09/12
-  config.default_per_page = 10
+  # 一度に表示できる投稿数を3にした 2021/09/12
+  # 表示数を増やすこともできるが今後ユーザーが増えた場合どうするかを説明。
+  config.default_per_page = 3
   
 end
