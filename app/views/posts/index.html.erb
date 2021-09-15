@@ -1,6 +1,12 @@
-<%= render 'flash_message/message' %>
-<h3>投稿一覧</h3>
-  <!--部分テンプレート：post_card/_card.html.erb 使用-->
-  <%= render 'post_card/card', pos: @post %>
-  <!--  -->
-<%= paginate @post %>
+<div class="row">
+  <div class="col-md-10">
+  <%= render 'flash_message/message' %>
+    <div>
+    <h3>投稿一覧</h3>
+    <!--部分テンプレート：post_card/_card.html.erb 使用-->
+    <div class="mt-5"><%= render 'post_card/card', pos: @post %></div>
+    <h3 class="col-md-2 ml-auto"><%= paginate @post %></h3>
+    <!--  -->
+    </div>
+  </div>
+</div>

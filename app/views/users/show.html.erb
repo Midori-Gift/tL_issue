@@ -1,26 +1,25 @@
-<h4>
-  <% if current_user.id == @user.id %>
-    あなた(<%= @user.name %>さん)のマイページです
-  <% else %>
-    <%= @user.name さんのページ%>
-  <% end %>
-</h4>
-<h4>
-  <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback:'no_image.jpg', class:'rounded-circle' %>
-  ユーザーネーム: <%= @user.name %>
-  <% if current_user.id == @user.id %>
-    <%= link_to 'ユーザー情報編集', edit_user_path(@user.id) %>
-  <% end %>
-</h4>
-
-<h3>投稿一覧</h3>
-<% @user_post.each do |pos|%>
-  <div>
-    <%= link_to post_path(pos.id) do %>
-    <div><%= attachment_image_tag pos, :image, :fill, 400, 400, format: 'jpeg' %></div>
-    <h5><%= l pos.created_at %></h5>
-    <h5><%= pos.sentence %></h5>
-    <% end %>
-    <%= paginate @user_post %>
+<div class="row">
+  <div class="col-md-10 mt-4">
+    <h4>
+      <% if current_user.id == @user.id %>
+        あなた(<%= @user.name %>さん)のマイページです
+      <% else %>
+        <%= @user.name さんのページ%>
+      <% end %>
+    </h4>
+    <div class="d-flex mt-4">
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback:'no_image.jpg', class:'rounded-circle' %>
+      <h4 class="ml-3 mt-3"><%= @user.name %></h4>
+      <% if current_user.id == @user.id %>
+        <%= link_to 'ユーザー情報編集', edit_user_path(@user.id), class:'btn btn-secondary mt-3 ml-5' %>
+      <% end %>
+    </div>
+    <div>
+      <h3 class="mt-5">投稿一覧</h3>
+      <div>
+      <%= render 'post_card/card', pos: @user_post %>
+      <h3 class="col-md-2 ml-auto"><%= paginate @user_post %></h3>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>

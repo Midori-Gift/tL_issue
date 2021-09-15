@@ -7,15 +7,13 @@
         <div class="col-md-8 m-auto">
           <div class="mt-5">
             <% if user_signed_in? %>
-              <%= link_to 'ログイン', user_path(current_user.id), class:'btn-lg btn-primary'%>
-              <%= link_to 'サインイン',user_path(current_user.id), class:'btn-lg btn-success ml-5'%>
+              <%= link_to 'ログイン', user_path(current_user.id), class:'btn btn-outline-primary btn-lg'%>
+              <%= link_to 'サインイン',user_path(current_user.id), class:'btn btn-outline-success btn-lg ml-5'%>
             <% else %>
-              <%= link_to 'ログイン', new_user_session_path, class:'btn-lg btn-primary'%>
-              <%= link_to 'サインイン', new_user_registration_path, class:'btn-lg btn-success ml-5'%>
+              <%= link_to 'ログイン', new_user_session_path, class:'btn btn-outline-primary btn-lg'%>
+              <%= link_to 'サインイン', new_user_registration_path, class:'btn btn-outline-success btn-lg ml-5'%>
             <% end %>
           </div>
-            
-            
         </div>
      </div>
   </div>
