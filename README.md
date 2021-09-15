@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+今回のコミットで仮完成とする。2021/09/15
