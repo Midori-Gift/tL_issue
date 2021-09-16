@@ -24,26 +24,38 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarDark" style="">
-        <ul class="navbar-nav ml-auto mb-2 mb-xl-0 mr-5">
+        <ul class="navbar-nav mr-auto mb-2 mb-xl-0 ml-5">
           <% if user_signed_in? %>
           <h4 class="nav-item">
-            <%= link_to 'Home', user_path(current_user.id), class:'nav-link btn btn-secondary  mr-3 text-light' %>
+            <%= link_to user_path(current_user.id), class:'nav-link btn btn-secondary  mr-3 text-light' do %>
+            <i class="fas fa-home">Home</i>
+            <% end %>
           </h4>
           <h4 class="nav-item">
-            <%= link_to 'My New Log!', new_post_path, class:'nav-link btn btn-secondary  mr-3 text-light' %>
+            <%= link_to new_post_path, class:'nav-link btn btn-secondary  mr-3 text-light' do %>
+            <i class="fas fa-blog">My New Log!</i>
+            <% end %>
           </h4>
           <h4 class="nav-item">
-            <%= link_to 'Logs', posts_path, class:'nav-link btn btn-secondary  mr-3 text-light' %>
+            <%= link_to posts_path, class:'nav-link btn btn-secondary  mr-3 text-light' do %>
+            <i class="fas fa-stream">Logs</i>
+            <% end %>
           </h4>
            <h4 class="nav-item">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class:'nav-link btn btn-secondary mr-3 text-light' %>
+            <%= link_to destroy_user_session_path, method: :delete, class:'nav-link btn btn-secondary mr-3 text-light' do %>
+            <i class="fas fa-sign-out-alt">Log out</i>
+            <% end %>
           </h4>
           <% else %>
            <h4 class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class:'nav-link btn btn-secondary  mr-3 text-light' %>
+            <%= link_to new_user_registration_path, class:'nav-link btn btn-secondary  mr-3 text-light' do %>
+            <i class="fas fa-address-card">Join!</i>
+            <% end %>
           </h4>
           <h4 class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class:'nav-link btn btn-secondary  mr-3 text-light' %>
+            <%= link_to new_user_session_path, class:'nav-link btn btn-secondary  mr-3 text-light' do %>
+            <i class="fas fa-sign-in-alt">Log in</i>
+            <% end %>
           </h4>
           <% end %>
         </ul>
