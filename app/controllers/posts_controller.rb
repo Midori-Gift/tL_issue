@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿に成功しました！'
       redirect_to posts_path
     else
-      flash.now[:alert] = '※投稿に失敗しました、画像と文字の入力は必須です。'
+      flash.now[:alert] = '※画像と文字の入力(120字以内)が投稿条件です。'
       render :new
     end
   end

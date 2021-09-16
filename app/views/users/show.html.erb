@@ -2,9 +2,11 @@
   <div class="col-md-10 mt-4">
     <h4>
       <% if current_user.id == @user.id %>
-        あなた(<%= @user.name %>さん)のマイページです
+        あなた(<%= @user.name %>
+        <span class="ml-2">さん)のマイページです</span>
       <% else %>
-        <%= @user.name さんのページ%>
+        <%= @user.name%>
+        <span class="ml-2">さんのページ</spna>
       <% end %>
     </h4>
     <div class="d-flex mt-4">

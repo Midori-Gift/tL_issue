@@ -29,17 +29,17 @@
             <% end %>
             <!-- -->
             </div>
-            <h4><%= l @post.created_at%></h4>
           <h4 class="mt-4 mb-4"><%= @post.sentence %></4>
+          <h4><%= l @post.created_at%></h4>
         </div>
-        <h4>コメントする</h4>
+        <h4 class="mt-5">コメントする</h4>
           <%= form_with model:[@post,@post_comment], url: post_post_comments_path(@post.id), local: true do |f| %>
             <div class="mt-4"><%= f.text_area :comment,class:'form-group-lg form-control' %>
             <div class="col-md-2 ml-auto mr-3"><%= f.submit "コメントする",class:'btn btn-outline-primary mt-4' %></div>
           <% end %>
       <div>
         <% @post.post_comments.each do |comment| %>
-        <div class="card mt-5 bg-light">
+        <div class="card mt-5 mb-5 bg-light">
           <div class="card-body">
             <h5 class="card-title">
               <%= link_to user_path(comment.user.id) do %>
@@ -47,18 +47,18 @@
                 <%= comment.user.name %>
               <% end %>
             </h5>
-            <p class="card-text text-break"><%= comment.comment %></p>
-            <% if current_user.id == comment.user.id %>
-            <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
-              <div class="col-md-5 ml-auto"><%= link_to 'コメント削除', post_post_comment_path(comment.id), method: :delete, class:'btn btn-outline-danger ml-5' %>
-            <% end %>
-            <!-- -->
-          </div>
+            <div class="card-text text-break"><%= comment.comment %></div>
+            <div class="d-flex mt-4">
+              <div class="card-text text-break"><%= l comment.created_at %></div>
+              <% if current_user.id == comment.user.id %>
+              <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
+                <div class="ml-auto"><%= link_to 'コメント削除', post_post_comment_path(comment.id), method: :delete, class:'btn btn-outline-danger ml-5' %>
+              <% end %>
+              </div>
+            </div>
         </div>
-         
-          
-        <% end %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
