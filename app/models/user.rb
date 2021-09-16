@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+         validates :name, presence: true
+         
+        # 適切なメールアドレスだけが登録できるように正規表現追加
+         TRUE_EMAIL = /[\w]+@[a-z]+\.[a-z]+\.?[a-z]+/
+         validates :email, presence: true, format: { with: TRUE_EMAIL}
+         
          has_many :posts, dependent: :destroy
          has_many :post_comments, dependent: :destroy
          has_many :favorites, dependent: :destroy

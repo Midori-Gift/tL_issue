@@ -1,6 +1,6 @@
 <% pos.each do |pos| %>
   <!--投稿した画像と文章までの範囲をリンク化、投稿詳細ページへ繋げる-->
-    <%= link_to post_path(pos.id) do %>
+    <%= link_to post_path(pos.id), class:'text-reset' do %>
       <div class="card mt-3 mb-4 bg-light">
         <div class="row g-0">
           <div class="col-5 col-sm-4">
@@ -13,9 +13,9 @@
               <h5 class="card-title">
                 <%= attachment_image_tag pos.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:'rounded-circle' %>
                 <%= pos.user.name %>
-                <div class="card-text mt-1 ml-5"><%= l pos.created_at %></div>
+                <div class="card-text mt-1 ml-5 fs-6"><%= l pos.created_at %></div>
             </h5>
-              <p class="card-text"><div class="text-muted"><%= pos.sentence %></div></p>
+              <p class="card-text"><div class="text-muted text-break fs-6"><%= pos.sentence %></div></p>
             </div>
           </div>
         </div>

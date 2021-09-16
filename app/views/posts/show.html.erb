@@ -48,7 +48,7 @@
                 <%= comment.user.name %>
               <% end %>
             </h5>
-            <p class="card-text"><%= comment.comment %></p>
+            <p class="card-text text-break"><%= comment.comment %></p>
             <% if current_user.id == comment.user.id %>
             <!--ログイン中ユーザーのidとのコメントのユーザーのidが一致した場合、削除ボタン出現-->
               <div class="col-md-5 ml-auto"><%= link_to 'コメント削除', post_post_comment_path(comment.id), method: :delete, class:'btn btn-outline-danger ml-5' %>
