@@ -4,8 +4,12 @@
     <title>tLissue</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!--Font Awesome追加 2021/09/16-->
+    <script src="https://kit.fontawesome.com/a4c81ae722.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
   </head>
   <body>
     <!-- ヘッダー部分 -->
@@ -13,7 +17,7 @@
     <div class="container-fluid">
       <h1><%= link_to 'We\'Blog!', root_path, class:'navbar-brand' %></h1>
       <% if user_signed_in? %>
-        <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback:'no_image.jpg',class:'rounded-circle ml-4' %>
+        <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback:'no_image.jpg', size:'60x60', class:'rounded-circle ml-4' %>
          <p class="text-white mt-3 ml-2"><%= current_user.name%> さんログイン中</p>
       <% end %>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDark" aria-controls="navbarDark" aria-expanded="false" aria-label="Toggle navigation">

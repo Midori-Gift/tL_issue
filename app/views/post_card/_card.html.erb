@@ -11,7 +11,7 @@
           <div class="col-7 col-sm-8">
             <div class="card-body">
               <h5 class="card-title">
-                <%= attachment_image_tag pos.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:'rounded-circle' %>
+                <%= attachment_image_tag pos.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50', class:'rounded-circle' %>
                 <%= pos.user.name %>
                 <div class="card-text mt-1 ml-5 fs-6"><%= l pos.created_at %></div>
             </h5>
