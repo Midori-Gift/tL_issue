@@ -76,7 +76,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
-# 環境変数利用のため追加 2021/09/18
+# MySQLの利用と環境変数利用のため追加 2021/09/18
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
