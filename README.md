@@ -25,6 +25,10 @@ IDE：Cloud9
 /home/ec2-user/environment $ git clone git@github.com:Midori-Gift/tL_issue.git  
 
 /home/ec2-user/environment/tL_issue $ rails db:migrate  
+
+※必要であればサンプル投稿の投入
+/home/ec2-user/environment/tL_issue　$ rails db:seed
+
 ```
 ## 
 
