@@ -36,3 +36,21 @@ IDE：Cloud9
 [Rubular](https://rubular.com/)  
 [Bootstrap5 CheatSheet](https://bootstrap-cheatsheet.themeselection.com/index.html)  
 [Neumorphism.io](https://neumorphism.io/#4482c5)  
+
+
+## 反省や躓いた部分  
+#### 反省  
+・ローカル環境でRDSを動かす方法が分かっていない、学び直す必要あり。
+
+#### 躓いた点
+・踏み台サーバー(EC2)からMySQLに接続できず
+→RDSにIPアドレス許可をしていないかったので反応が無いのは当たり前
+
+・MySQLにmigrationファイルで設定していないはずのカラムでUnknow column '~'のエラー
+→本番環境でマイグレートしたものが残留している、現行のマイグレーションと矛盾してしまうので
+こういった場合は一度pumaの再起動をしてから再度マイグレートを行う。
+
+
+
+
+
